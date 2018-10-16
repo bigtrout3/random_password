@@ -1,3 +1,11 @@
+extern crate rand;
+use rand::seq;
+
+const DICTIONARY: &'static str = include_str!("../dictionary.txt");
+
 fn main() {
-    println!("Hello, world!");
+    let words: Vec<_> = DICTIONARY.split("\r\n").collect();
+    let mut rng = rand::thread_rng();
+    let out: Vec<&str> = seq::sample_iter(&mut rng, words.into_iter(), 3).unwrap();
+    println!("{}", out.join("-"));
 }
