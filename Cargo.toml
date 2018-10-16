@@ -1,0 +1,6 @@
+[package]
+name = "random_password"
+version = "0.1.0"
+authors = ["Brandon Potter <bmpotter13@gmail.com>"]
+
+[dependencies]
