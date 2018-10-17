@@ -4,8 +4,12 @@ use rand::seq;
 const DICTIONARY: &'static str = include_str!("../dictionary.txt");
 
 fn main() {
-    let words: Vec<_> = DICTIONARY.split("\r\n").collect();
+    let words: Vec<_> = DICTIONARY.lines().collect();
     let mut rng = rand::thread_rng();
-    let out: Vec<&str> = seq::sample_iter(&mut rng, words.into_iter(), 3).unwrap();
+    let out: Vec<&str> = seq::sample_iter(
+        &mut rng,
+        words.into_iter(),
+        3).unwrap();
+    println!("{}", out[1]);
     println!("{}", out.join("-"));
 }
