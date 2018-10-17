@@ -17,4 +17,10 @@ gobbled-womeras-ashy
 ## Features To Add
 
 - [ ] Configurable separator
+- [ ] Configurable number of words
 - [ ] Configurable dictionary
+- [ ] Optionally copy to clipboard
+    - [ ] Windows
+	- [ ] Mac
+	- [ ] Linux
+
