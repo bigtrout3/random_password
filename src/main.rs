@@ -10,6 +10,5 @@ fn main() {
         &mut rng,
         words.into_iter(),
         3).unwrap();
-    println!("{}", out[1]);
     println!("{}", out.join("-"));
 }
