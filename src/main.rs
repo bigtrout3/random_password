@@ -3,12 +3,27 @@ use rand::seq;
 
 const DICTIONARY: &'static str = include_str!("../dictionary.txt");
 
+struct Config<'a> {
+    dictionary: &'a str,
+    separator: &'a str,
+    nwords: usize,
+}
+
 fn main() {
-    let words: Vec<_> = DICTIONARY.lines().collect();
+    let conf = Config {
+        dictionary: DICTIONARY,
+        separator: "-",
+        nwords: 3,
+    };
+    make_password(conf);
+}
+
+fn make_password(conf: Config) -> () {
+    let words: Vec<_> = conf.dictionary.lines().collect();
     let mut rng = rand::thread_rng();
     let out: Vec<&str> = seq::sample_iter(
         &mut rng,
         words.into_iter(),
-        3).unwrap();
-    println!("{}", out.join("-"));
+        conf.nwords).unwrap();
+    println!("{}", out.join(conf.separator));
 }
