@@ -11,19 +11,12 @@ struct Config<T: AsRef<str>> {
     nwords: usize,
 }
 
-#[cfg(not(feature = "cli_opts"))]
 fn main() {
     let conf = Config {
         dictionary: DICTIONARY,
         separator: "-",
         nwords: 3,
     };
-    make_password(conf);
-}
-
-#[cfg(feature = "cli_opts")]
-fn main() {
-    let conf = cli().expect("Couldn't process CLI arguments");
     make_password(conf);
 }
 
