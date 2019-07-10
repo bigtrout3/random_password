@@ -135,15 +135,31 @@ fn parse_separator<I>(config: &mut Config, current_option: &str, options: &mut I
 }
 
 #[cfg(test)]
-mod parse_count {
+#[inline]
+fn default_config() -> Config {
+    Config { count: 3, dictionary: String::new(), separator: String::new(), }
+}
+
+
+#[cfg(test)]
+mod long_options {
 
     use super::*;
     use std::iter;
 
-    #[inline]
-    fn default_config() -> Config {
-        Config { count: 3, dictionary: String::new(), separator: String::new(), }
+    #[test]
+    fn fails_with_bad_option() {
+        let mut config = default_config();
+        let mut args = iter::empty::<String>();
+        assert!(do_long_option(&mut config, "arst", &mut args).is_err());
     }
+}
+
+#[cfg(test)]
+mod parse_count {
+
+    use super::*;
+    use std::iter;
 
     #[test]
     fn with_short_option_no_space() {
